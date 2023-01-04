@@ -12,7 +12,6 @@ import java.util.Date;
 @Data
 public class Order {
     private Long id;
-    private Date placedAt;
     @NotEmpty(message = "Musisz podać imię i nazwisko")
     private String name;
     @NotEmpty(message = "Musisz podać nazwę ulicy oraz numer domu")
@@ -30,5 +29,6 @@ public class Order {
     private String ccExpiration;
     @Digits(integer = 3, fraction = 0, message = "Nieprawidłowy kod CVV")
     private String ccCVV;
+    private Date placedAt;
 
 }

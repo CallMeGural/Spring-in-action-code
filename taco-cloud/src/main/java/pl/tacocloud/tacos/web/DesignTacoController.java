@@ -63,6 +63,7 @@ public class DesignTacoController {
             model.addAttribute(type.toString().toLowerCase(Locale.ROOT),
                     filterByType(ingredients,type));
         }
+        model.addAttribute("design",new Taco());
         return "design";
     }
     @PostMapping
