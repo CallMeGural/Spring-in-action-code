@@ -1,29 +1,34 @@
 package pl.tacocloud.tacos.web;
 
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.tacocloud.tacos.Ingredient;
 import pl.tacocloud.tacos.Ingredient.Type;
 import pl.tacocloud.tacos.Taco;
+import pl.tacocloud.tacos.data.IngredientRepository;
 
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
-@Slf4j
+//@Slf4j
 @Controller
 @RequestMapping("/design")
+@SessionAttributes("order")
 public class DesignTacoController {
 
-    @ModelAttribute
+    private final IngredientRepository ingredientRepository;
+
+    public DesignTacoController(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
+    }
+
+    /*@ModelAttribute
     public void addIngredientsToModel(Model model) {
         List<Ingredient> ingredients = Arrays.asList(
          new Ingredient("FLTO","pszenna", Type.WRAP),
@@ -43,11 +48,21 @@ public class DesignTacoController {
             model.addAttribute(type.toString().toLowerCase(),
                     filterByType(ingredients, type));
         }
-    }
+    }*/
 
     @GetMapping
     public String showDesignForm(Model model) {
-        model.addAttribute("design",new Taco()); //kopiowanie atrybutów z modelu do serwletu odpowiedzi
+//        model.addAttribute("design",new Taco()); //kopiowanie atrybutów z modelu do serwletu odpowiedzi
+//        return "design";
+
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredientRepository.findAll().forEach(ingredients::add);
+
+        Type[] types = Ingredient.Type.values();
+        for(Type type : types) {
+            model.addAttribute(type.toString().toLowerCase(Locale.ROOT),
+                    filterByType(ingredients,type));
+        }
         return "design";
     }
     @PostMapping
@@ -55,9 +70,6 @@ public class DesignTacoController {
         if (errors.hasErrors()) {
             return "redirect:/design";
         }
-
-        // this will save our Taco Design
-         log.info("Przetwarzanie projektu: " + design);
 
         return "redirect:/orders/current";
     }
