@@ -17,5 +17,5 @@ public class Taco {
     private String name;
     @NotNull(message = "Musisz wybrać przynajmniej jeden składnik")
     @Size(min=1, message="Musisz wybrać przynajmniej jeden składnik")
-    private List<String> ingredients;
+    private List<Ingredient> ingredients;
 }

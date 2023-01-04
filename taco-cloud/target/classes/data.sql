@@ -7,7 +7,7 @@ delete from Ingredient;
 insert into Ingredient (id, name, type)
 values ('FLTO', 'pszenna', 'WRAP');
 insert into Ingredient (id, name, type)
-values ('COTO', 'kukurydzianaaaaa', 'WRAP');
+values ('COTO', 'kukurydziana', 'WRAP');
 insert into Ingredient (id, name, type)
 values ('GRBF', 'mielona wołowina', 'PROTEIN');
 insert into Ingredient (id, name, type)
