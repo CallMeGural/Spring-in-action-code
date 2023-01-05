@@ -84,9 +84,9 @@ public class DesignTacoController {
     public String processDesign(@Valid Taco design, Errors errors, @ModelAttribute Order order) {
         //ModelAttribute - wartosc ma pochodzić z modelu
         if (errors.hasErrors()) {
+            System.out.println(errors.getAllErrors());
             return "redirect:/design";
         }
-
         Taco savedTaco = tacoRepository.save(design);
         order.addDesign(savedTaco);
         return "redirect:/orders/current";

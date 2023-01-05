@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import pl.tacocloud.tacos.Ingredient;
 import pl.tacocloud.tacos.Taco;
 
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.Arrays;
@@ -34,20 +35,20 @@ public class JdbcTacoRepository implements TacoRepository {
     }
 
     private void saveIngredientToTaco(Ingredient ingredient, long tacoId) {
-        jdbc.update("select into Taco_Ingrediets " +
+        jdbc.update("insert into Taco_Ingredients " +
                         "(taco,ingredient) values (?,?)",
                         tacoId,ingredient.getId());
     }
 
     private long saveTacoInfo(Taco taco) {
         taco.setCreatedAt(new Date());
-        PreparedStatementCreator psc = new PreparedStatementCreatorFactory(
+        PreparedStatementCreatorFactory pscf = new PreparedStatementCreatorFactory(
                 "insert into Taco (name, createdAt) values (?,?)",
-                Types.VARCHAR, Types.TIMESTAMP).
-                newPreparedStatementCreator(
-                        Arrays.asList(
-                                taco.getName(),
-                                new Timestamp(taco.getCreatedAt().getTime())));
+                Types.VARCHAR, Types.TIMESTAMP);
+        pscf.setReturnGeneratedKeys(true);
+        PreparedStatementCreator psc = pscf.newPreparedStatementCreator(Arrays.asList(
+                taco.getName(),
+                new Timestamp(taco.getCreatedAt().getTime())));
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbc.update(psc,keyHolder);
         return keyHolder.getKey().longValue();

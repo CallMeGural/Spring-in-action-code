@@ -4,6 +4,6 @@ import pl.tacocloud.tacos.Ingredient;
 
 public interface IngredientRepository {
     Iterable<Ingredient> findAll();
-    Ingredient findById(Long id);
+    Ingredient findById(String id);
     Ingredient save(Ingredient ingredient);
 }
