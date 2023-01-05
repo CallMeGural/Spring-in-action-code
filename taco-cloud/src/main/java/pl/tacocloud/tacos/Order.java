@@ -1,19 +1,30 @@
 package pl.tacocloud.tacos;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
 @Data
-public class Order {
+@Entity
+@Table(name = "Taco_Order")
+public class Order implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Date placedAt;
+
     @NotEmpty(message = "Musisz podać imię i nazwisko")
     private String name;
     @NotEmpty(message = "Musisz podać nazwę ulicy oraz numer domu")
@@ -31,10 +42,16 @@ public class Order {
     private String ccExpiration;
     @Digits(integer = 3, fraction = 0, message = "Nieprawidłowy kod CVV")
     private String ccCVV;
-    private Date placedAt;
+
+    @ManyToMany(targetEntity = Taco.class)
     private List<Taco> tacos = new ArrayList<>();
 
     public void addDesign(Taco taco) {
         tacos.add(taco);
+    }
+
+    @PrePersist
+    void placedAt() {
+        this.placedAt=new Date();
     }
 }
