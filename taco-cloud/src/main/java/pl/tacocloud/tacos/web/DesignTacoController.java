@@ -68,8 +68,7 @@ public class DesignTacoController {
     public String showDesignForm(Model model) {
 //        model.addAttribute("design",new Taco()); //kopiowanie atrybutów z modelu do serwletu odpowiedzi
 //        return "design";
-        List<Ingredient> ingredients = new ArrayList<>();
-        ingredientRepository.findAll().forEach(ingredients::add);
+        List<Ingredient> ingredients = new ArrayList<>(ingredientRepository.findAll());
 
         Type[] types = Ingredient.Type.values();
         for(Type type : types) {

@@ -1,5 +1,6 @@
 package pl.tacocloud.tacos;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -9,13 +10,22 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@Entity
 public class Taco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date createdAt;
     @NotNull
     @Size(min=5, message="Nazwa musi składać się z przynajmniej 5 znaków")
     private String name;
+    @ManyToMany(targetEntity = Ingredient.class)
     @NotNull(message = "Musisz wybrać przynajmniej jeden składnik")
     @Size(min=1, message="Musisz wybrać przynajmniej jeden składnik")
     private List<Ingredient> ingredients;
+
+    @PrePersist //przypisanie bierzacej daty i godziny przed trwalym zapisaniem obiektu Taco
+    void createdAt() {
+        this.createdAt=new Date();
+    }
 }

@@ -1,9 +1,9 @@
 package pl.tacocloud.tacos.data;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import pl.tacocloud.tacos.Ingredient;
 
-public interface IngredientRepository {
-    Iterable<Ingredient> findAll();
-    Ingredient findById(String id);
-    Ingredient save(Ingredient ingredient);
+@Repository
+public interface IngredientRepository extends JpaRepository<Ingredient,String> {
 }
