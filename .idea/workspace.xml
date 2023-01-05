@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd0e3b1c-e3e8-444e-a899-45d4984b298b" name="Changes" comment="" />
+    <list default="true" id="bd0e3b1c-e3e8-444e-a899-45d4984b298b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/TacoCloudApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/TacoCloudApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/Taco.java" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/Taco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/data/IngredientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/data/IngredientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/data/JdbcIngredientRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/data/JdbcOrderRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/data/JdbcTacoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/data/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/data/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/data/TacoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/data/TacoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/web/IngredientByIdConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/src/main/java/pl/tacocloud/tacos/web/IngredientByIdConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/taco-cloud.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/TacoCloudApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/TacoCloudApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/Ingredient$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/Ingredient$Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/Ingredient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/Taco.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/Taco.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/data/IngredientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/data/IngredientRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/data/OrderRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/data/OrderRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/data/TacoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/data/TacoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/web/DesignTacoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/web/DesignTacoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/web/IngredientByIdConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/web/IngredientByIdConverter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/web/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/taco-cloud/target/classes/pl/tacocloud/tacos/web/OrderController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +48,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectId" id="2JrIB7uiEMsGxRgJjVcOE2mS98v" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -33,7 +77,6 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -42,6 +85,17 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.ignored.files" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TacoCloudApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="taco-cloud" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="pl.tacocloud.TacoCloudApplication" />
@@ -61,6 +115,8 @@
       <workItem from="1672829638887" duration="6001000" />
       <workItem from="1672847701233" duration="4773000" />
       <workItem from="1672909127394" duration="4630000" />
+      <workItem from="1672920217883" duration="1142000" />
+      <workItem from="1672921386673" duration="292000" />
     </task>
     <servers />
   </component>
