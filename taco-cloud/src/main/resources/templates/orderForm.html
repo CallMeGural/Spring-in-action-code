@@ -75,8 +75,7 @@
               th:if="${#fields.hasErrors('ccCVV')}"
               th:errors="*{ccCVV}">Błąd kodu CVV</span>
         <br/>
-
-        <input type="submit" value="Złóż zamówienie"/>
+        <a th:href="@{/logout}"><input type="submit" value="Złóż zamówienie"/></a>
     </form>
 
 </body>

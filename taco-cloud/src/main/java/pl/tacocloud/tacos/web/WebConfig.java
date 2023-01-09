@@ -11,5 +11,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         // metoda ta zastepuje HomeController - na endpoincie '/' ustawiany jest widok home.html
         registry.addViewController("/").setViewName("home");
+        registry.addViewController("/login");
     }
 }

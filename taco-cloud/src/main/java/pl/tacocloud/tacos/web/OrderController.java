@@ -2,6 +2,7 @@ package pl.tacocloud.tacos.web;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import pl.tacocloud.tacos.Order;
+import pl.tacocloud.tacos.User;
 import pl.tacocloud.tacos.data.OrderRepository;
 
 @Controller
@@ -31,8 +33,10 @@ public class OrderController {
     }
 
     @PostMapping
-    public String processOrder(@Valid Order order, Errors errors, SessionStatus status) {
+    public String processOrder(@Valid Order order, Errors errors,
+                               SessionStatus status, @AuthenticationPrincipal User user) {
         if(errors.hasErrors()) return "orderForm";
+        order.setOrderedBy(user);
         orderRepository.save(order);
         status.setComplete(); //wyczyszczenie sesji - aby mozna bylo utworzyc nowe, puste zamowienie
         return "redirect:/";
