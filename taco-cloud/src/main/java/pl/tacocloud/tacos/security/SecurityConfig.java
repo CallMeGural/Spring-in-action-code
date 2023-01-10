@@ -35,56 +35,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeHttpRequests((authorize)
-                -> authorize.requestMatchers("/register/**")
-                .permitAll())
+                        -> authorize.requestMatchers("/register/**")
+                        .permitAll())
 
                 .formLogin().loginPage("/login")
                 .defaultSuccessUrl("/design")
                 .permitAll()
-                .and().authorizeHttpRequests().
-                    requestMatchers("/design","/orders").authenticated().
-                    requestMatchers("/design","/orders").hasRole("ROLE_USER")
+                .and().authorizeHttpRequests()
+                .requestMatchers("/design", "/order","/**").hasAnyAuthority("ROLE_USER")
                 .and()
                 .logout().logoutSuccessUrl("/")
                 .and()
-                .csrf().disable().authorizeHttpRequests()
-                .requestMatchers("/h2-console/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                    .headers()
-                    .frameOptions()
-                    .sameOrigin();;
+                .authorizeHttpRequests()
+                .requestMatchers("/h2-console/**", "/").permitAll();
         return http.build();
-//        http
-//                .csrf().disable().authorizeHttpRequests()
-//                .requestMatchers("/design","/orders")
-//                .hasRole("ROLE_USER")
-//                .requestMatchers("/","/**").permitAll()
-//                .and()
-//                    .formLogin()
-//                    .loginPage("/login")
-//                .and()
-//                    .logout()
-//                    .logoutSuccessUrl("/")
-//                .and()
-//                .csrf().disable().authorizeHttpRequests()
-//                .requestMatchers("/h2-console/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                    .headers()
-//                    .frameOptions()
-//                    .sameOrigin();
-
     }
-    /*@Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManagerBean(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-        return authenticationManagerBuilder.build();
-    }*/
 }
