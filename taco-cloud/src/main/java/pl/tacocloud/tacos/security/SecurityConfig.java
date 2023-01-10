@@ -34,20 +34,20 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeHttpRequests((authorize)
+        http.authorizeHttpRequests((authorize)
                         -> authorize.requestMatchers("/register/**")
                         .permitAll())
 
                 .formLogin().loginPage("/login")
-                .defaultSuccessUrl("/design")
+                .successForwardUrl("/design")
                 .permitAll()
                 .and().authorizeHttpRequests()
-                .requestMatchers("/design", "/order","/**").hasAnyAuthority("ROLE_USER")
+                .requestMatchers("/**").hasAnyAuthority("ROLE_USER")
                 .and()
                 .logout().logoutSuccessUrl("/")
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/h2-console/**", "/").permitAll();
+                .requestMatchers("/h2-console/**").permitAll();
         return http.build();
     }
 }
