@@ -42,12 +42,12 @@ public class SecurityConfig {
                 .successForwardUrl("/design")
                 .permitAll()
                 .and().authorizeHttpRequests()
-                .requestMatchers("/**").hasAnyAuthority("ROLE_USER")
+                .requestMatchers("/design","/order").hasAnyAuthority("ROLE_USER")
                 .and()
                 .logout().logoutSuccessUrl("/")
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/h2-console/**").permitAll();
+                .requestMatchers("/h2-console/**","/","/**").permitAll();
         return http.build();
     }
 }
