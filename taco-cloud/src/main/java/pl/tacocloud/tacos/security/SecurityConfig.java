@@ -2,20 +2,15 @@ package pl.tacocloud.tacos.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -34,20 +29,21 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authorize)
-                        -> authorize.requestMatchers("/register/**")
-                        .permitAll())
-
-                .formLogin().loginPage("/login")
-                .successForwardUrl("/design")
-                .permitAll()
-                .and().authorizeHttpRequests()
-                .requestMatchers("/design","/order").hasAnyAuthority("ROLE_USER")
-                .and()
-                .logout().logoutSuccessUrl("/")
-                .and()
-                .authorizeHttpRequests()
-                .requestMatchers("/h2-console/**","/","/**").permitAll();
+        //http.csrf().disable();
+        /*http.authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/register","/h2console","/").permitAll()
+                        .requestMatchers("/design","/orders").hasAnyAuthority("ROLE_USER"));
+        http.formLogin().loginPage("/login").successForwardUrl("/").permitAll();
+        http.logout().logoutSuccessUrl("/");*/
+        http.authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/design/**","/orders/**").hasAuthority("USER")
+                .requestMatchers("/h2console/**","/register","/").permitAll()
+                .anyRequest().authenticated()
+        )
+                .formLogin().loginPage("/login").permitAll().and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true) ;
         return http.build();
     }
 }

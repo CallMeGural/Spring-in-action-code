@@ -11,7 +11,8 @@
 <img th:src="@{/images/TacoCloud.png}"/>
 
 <!-- tag::formTag[] -->
-<form method="POST" th:object="${design}">
+<!--<form method="POST" th:object="${design}">-->
+    <form th:method="POST" th:object="${design}" th:action="@{/design}" id="tacoForm">
     <!-- end::all[] -->
 
     <span class="validationError"

@@ -42,7 +42,7 @@ create table if not exists Taco_Order_Tacos (
 create table if not exists Purchaser (
     id bigint primary key AUTO_INCREMENT,
     username varchar(30) not null,
-    password varchar(50) not null,
+    password varchar(255) not null,
     fullname varchar(50) not null,
     street varchar(50) not null,
     city varchar(50) not null,

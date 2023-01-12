@@ -3,17 +3,25 @@ package pl.tacocloud;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.tacocloud.tacos.Ingredient;
 import pl.tacocloud.tacos.Ingredient.Type;
+import pl.tacocloud.tacos.User;
 import pl.tacocloud.tacos.data.IngredientRepository;
+import pl.tacocloud.tacos.data.UserRepository;
 
 @SpringBootApplication
 public class TacoCloudApplication implements CommandLineRunner {
 
     private final IngredientRepository repo;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public TacoCloudApplication(IngredientRepository repo) {
+    public TacoCloudApplication(IngredientRepository repo, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.repo = repo;
+        this.userRepository = userRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     public static void main(String[] args) {
@@ -32,5 +40,6 @@ public class TacoCloudApplication implements CommandLineRunner {
                 repo.save(new Ingredient("JACK", "Monterrey Jack", Type.CHEESE));
                 repo.save(new Ingredient("SLSA", "Salsa", Type.SAUCE));
                 repo.save(new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
+                userRepository.save(new User("filip", passwordEncoder.encode("123"), "Filip","Czecha","Kraków","mp","30-042","123123123"));
             }
 }
